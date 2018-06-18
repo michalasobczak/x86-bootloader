@@ -17,7 +17,7 @@ dd if=/dev/zero of=disk.img bs=1024 count=1440
 It will be zero-filled, so then put generated binary into this file:
 ```dd if=boot.bin of=disk.img conv=notrun```
 
-```bochsrc.bxrc``` states that we are going to boot from floppy drive A.
+```bochsrc.bxrc``` states that we are going to boot from floppy drive A. Execute this file to run emulator.
 
 
 ## Objectives
