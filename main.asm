@@ -2,13 +2,13 @@
 ;  Initialization
 ; **************************
 [bits 16]
-[org 0x7C00]
+[org 0x7C00] ; 31744d
 
 ; **************************
 ;  Main
 ; **************************
-mov si, HelloString
-; call PrintString
+;mov si, HelloString
+;call PrintString
 call EnterVideoMode
 jmp $
 
@@ -21,7 +21,6 @@ PrintSingleCharacter:
   mov bl, 0x0007
   int 0x0010
   ret
-
 PrintString:
   NextCharacter:	
     mov al, [si]
@@ -31,27 +30,23 @@ PrintString:
     call PrintSingleCharacter
     jmp NextCharacter
 
+%macro PutPixelAt 3
+  mov bx, %2
+  imul bx,320
+  add bx, %1
+  mov di, bx
+  mov al, %3 
+  mov [es:di], al
+%endmacro
+    
 EnterVideoMode:
   mov ax, 0x0013 
   int 0x0010
-  Draw:
-    ; segment
-    mov ax, 0xA000 ; 40960d
-    mov es, ax
-    ; offset 0
-    xor di, di
-    ; 
-    mov ax, 0x0F ; white 
-    mov cx, 0x7D00 ; 32000d
-    rep stosb
-    ;
-    mov ax, 0x04 ; red 
-    mov cx, 0x7D00 ; 32000d
-    rep stosb
-  Control:
-    nop
-    jmp Control
-  ;call ExitVideoMode
+  mov ax, 0xA000 ; 40960d
+  mov es, ax
+Draw:
+    f: PutPixelAt 100,100,0x0f
+    jmp Draw
 
 ExitVideoMode:
   mov ax,0x0003 
