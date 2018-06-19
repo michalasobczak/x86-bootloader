@@ -32,8 +32,8 @@ PrintString:
     jmp NextCharacter
 
 EnterVideoMode:
-  mov ax,0013h 
-  int 10h
+  mov ax, 0x13 
+  int 0x10
   WhileTrue:
     nop
     jmp WhileTrue
