@@ -8,13 +8,14 @@
 ;  Main
 ; **************************
 mov si, HelloString
-call PrintString
+; call PrintString
+call EnterVideoMode
 jmp $
 
 ; **************************
 ;  Procedures
 ; **************************
-PrintCharacter:
+PrintSingleCharacter:
   mov ah, 0x0e
   mov bh, 0x00
   mov bl, 0x07
@@ -22,15 +23,27 @@ PrintCharacter:
   ret
 
 PrintString:
-  next_character:	
+  NextCharacter:	
     mov al, [si]
     inc si
     or al, al
-    jz exit_function
-    call PrintCharacter
-    jmp next_character
+    jz ExitFunction
+    call PrintSingleCharacter
+    jmp NextCharacter
 
-exit_function:
+EnterVideoMode:
+  mov ax,0013h 
+  int 10h
+  WhileTrue:
+    nop
+    jmp WhileTrue
+  ;call ExitVideoMode
+
+ExitVideoMode:
+  mov ax,0003h 
+  int 10h
+  
+ExitFunction:
   ret
 
 ; **************************
