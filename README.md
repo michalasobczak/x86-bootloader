@@ -35,4 +35,4 @@ Execute this file to run emulator.
 
 ## Objectives
 
-Create bootloader based program targeting x86 architecture computer. Start in real mode.
+Create bootloader based program targeting x86 architecture computer. Start in real mode. First try to fit within 512 bytes with as much as possible. Secondly, if there will be no more space left, try to read more sectors from the storage and load it into memory. 
