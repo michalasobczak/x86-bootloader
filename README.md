@@ -8,16 +8,29 @@ In order to generate binary from assembly source:
 ```
  nasm main.asm -f bin -o boot.bin
 ```
-
 Assuming we want to run it as a floppy disk we need to create the image first:
 ```
 dd if=/dev/zero of=disk.img bs=1024 count=1440
 ```
 
 It will be zero-filled, so then put generated binary into this file:
-```dd if=boot.bin of=disk.img conv=notrun```
+```
+dd if=boot.bin of=disk.img conv=notrun
+```
 
-```bochsrc.bxrc``` states that we are going to boot from floppy drive A. Execute this file to run emulator.
+```bochsrc.bxrc``` states that we are going to boot from floppy drive A. 
+
+```
+megs: 32
+floppya: 1_44=disk.img, status=inserted
+boot: a
+log: bochsout.txt
+mouse: enabled=0
+cpu: ips=15000000
+clock: sync=both
+```
+
+Execute this file to run emulator.
 
 
 ## Objectives
