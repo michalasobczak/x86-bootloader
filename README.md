@@ -69,7 +69,8 @@ Will try to apply ortographic 3D projection similar to this one taken from C64/C
 /* *********************** */
 /* ortographic_projection  */
 /* *********************** */
-void ortographic_projection(unsigned char * rx, unsigned char * ry, int ax,int ay,int az, int sx,int sz, int cx,int cz) {  
+void ortographic_projection(unsigned char * rx, unsigned char * ry, 
+    int ax,int ay,int az, int sx,int sz, int cx,int cz) {  
   int d = az/30;
   int d2 = az/20;
   int bx = (ax*1) + d;
