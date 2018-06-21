@@ -80,8 +80,7 @@ EnterVideoMode:
   mov ax, 0xA000 ; 40960d
   mov es, ax
   .Draw:
-    LineFromTo 10,10, 135,20
-    LineFromTo 20,20, 135,20
+    LineFromTo 10,10, 135,20    
     jmp .Draw
           
 ;ExitVideoMode:
