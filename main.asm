@@ -48,21 +48,21 @@ PrintSingleCharacter:
   mov [vy], ax      
   mov ax, [vx0]                       ; x = x0
   mov [vx], ax      
-  .Each:                              ; (x0..x1).each do |x|        
-    .f: PutPixelAt [vx],[vy],0x0f        
-    .IfInEach:
+  %%.Each:                              ; (x0..x1).each do |x|        
+    %%.f: PutPixelAt [vx],[vy],0x0f        
+    %%.IfInEach:
     cmp word [vd], 0                  ; if d > 0
-    jg  .True
-    jle .AfterIf
-    .True:          
+    jg  %%.True
+    jle %%.AfterIf
+    %%.True:          
       mov ax, [vy]                    ; y = y + 1z
       inc ax
       mov [vy], ax          
       mov ax, [vdx]                   ; d = d - 2*dx
       add ax, [vdx]
       sub [vd], ax
-      jmp .AfterIf
-    .AfterIf:          
+      jmp %%.AfterIf
+    %%.AfterIf:          
       mov ax, [vdy]                   ; d = d + 2*dy
       add ax, [vdy]
       add [vd], ax          
@@ -71,7 +71,7 @@ PrintSingleCharacter:
       mov [vx], ax          
       mov ax, [vx]                    ; Each
       cmp ax, [vx1]          
-      jle .Each
+      jle %%.Each
 %endmacro 
  
 EnterVideoMode:
@@ -81,6 +81,7 @@ EnterVideoMode:
   mov es, ax
   .Draw:
     LineFromTo 10,10, 135,20    
+    LineFromTo 20,20, 135,20    
     jmp .Draw
           
 ;ExitVideoMode:
