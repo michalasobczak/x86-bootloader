@@ -1,0 +1,7 @@
+megs: 32
+floppya: 1_44=mas.img, status=inserted
+boot: a
+log: bochsout.txt
+mouse: enabled=0
+cpu: ips=15000000
+clock: sync=both
