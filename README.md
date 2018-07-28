@@ -1,7 +1,7 @@
 # x86-bootloader
 
 ## protected-mode-2d
-2D graphics in NASM x86 assembly
+2D graphics in NASM x86 assembly (animated).
 
 ![Screenshot](protected-mode-2d/img/01_startup.png)
 
