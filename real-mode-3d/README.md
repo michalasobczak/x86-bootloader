@@ -38,25 +38,7 @@ The program enters video mode 13h thru 10h BIOS interrupt (real mode). Starting 
 
 
 ## Rendering
-Will try to apply ortographic 3D projection similar to this one taken from C64/C development:
-
-```
-/* *********************** */
-/* ortographic_projection  */
-/* *********************** */
-void ortographic_projection(unsigned char * rx, unsigned char * ry, 
-    int ax,int ay,int az, int sx,int sz, int cx,int cz) {  
-  int d = az/30;
-  int d2 = az/20;
-  int bx = (ax*1) + d;
-  int by = (ay*1) + d2 - 150;
-  
-  sx,sz,cx,cz=0;
-  
-  *rx = bx;
-  *ry = by;
-} /* ortographic_projection */
-```
+Will try to apply ortographic 3D projection similar to this one taken from C64/C development.
 
 ## Objectives
 
