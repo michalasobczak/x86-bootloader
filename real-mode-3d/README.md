@@ -36,31 +36,6 @@ Execute this file to run emulator.
 
 The program enters video mode 13h thru 10h BIOS interrupt (real mode). Starting from segment 40960d it uses ```es``` register with destination index (```di```) to put directly pixel bytes via ```al``` (acumulator low) register. Single pixel can be draw using ```PutPixelAt``` macro. There is also macro for line drawing called ```LineFromTo```. Line drawing utilizes Bresenham's algorithm. 
 
-```
-#
-# Bresenham's line algorithm
-#   integer only
-#   IBM 1962
-#
-def print_line_from_to(x0,y0, x1,y1)
-  dx = x1 - x0
-  dy = y1 - y0
-  d = 2*dy - dx
-  y = y0
-
-  (x0..x1).each do |x|
-    puts "#{x} x #{y}" 
-    if d > 0
-       y = y + 1
-       d = d - 2*dx
-    end
-    d = d + 2*dy
-  end
-end
-
-# Calculate x,y coordinates
-print_line_from_to(0,0, 20,10)
-```
 
 ## Rendering
 Will try to apply ortographic 3D projection similar to this one taken from C64/C development:
